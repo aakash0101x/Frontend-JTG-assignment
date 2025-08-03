@@ -612,14 +612,14 @@ header {
     height: 759.6px;
     padding-right: 98px;
     padding-left: 98px;
-    /* margin: auto; */
+    margin: auto;
 
 }
 
 .contact-cont2 {
     width: 1244px;
     height: 759.6px;
-    /* margin: auto; */
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -970,4 +970,5 @@ footer {
 
     color: #767676;
     padding-left: 10px;
+
 }
