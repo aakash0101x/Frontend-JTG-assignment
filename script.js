@@ -1,28 +1,25 @@
 window.addEventListener("load", function () {
   const track = document.getElementById("carousel-track");
   const dotsContainer = document.getElementById("dots");
-  const originalCards = [...document.querySelectorAll(".recomm-card")];
+  const origcards = [...document.querySelectorAll(".recomm-card")];
 
-  const visibleCards = 3;
-  const totalOriginal = originalCards.length;
-  const cardWidth = originalCards[0].offsetWidth + 4;
+  const visibcards = 3;
+  const totorigin = origcards.length;
+  const cardWidth = origcards[0].offsetWidth + 4;
 
-  const prepend = originalCards.slice(-visibleCards).map(card => card.cloneNode(true));
-  const append = originalCards.slice(0, visibleCards).map(card => card.cloneNode(true));
+  const prepend = origcards.slice(-visibcards).map(card => card.cloneNode(true));
+  const append = origcards.slice(0, visibcards).map(card => card.cloneNode(true));
 
   prepend.forEach(clone => track.prepend(clone));
   append.forEach(clone => track.append(clone));
-
-  const allCards = document.querySelectorAll(".recomm-card");
-  let currentIndex = visibleCards;
-
+  let currentIndex = visibcards;
   track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
-  for (let i = 0; i <= totalOriginal - visibleCards; i++) {
+  for (let i = 0; i <= totorigin - visibcards; i++) {
     const dot = document.createElement("span");
     if (i === 0) dot.classList.add("active");
     dot.addEventListener("click", () => {
-      currentIndex = i + visibleCards;
+      currentIndex = i + visibcards;
       goToSlide(currentIndex);
       resetAutoSlide();
     });
@@ -33,9 +30,9 @@ window.addEventListener("load", function () {
 
   function updateDots(index) {
     dots.forEach(dot => dot.classList.remove("active"));
-    let adjustedIndex = (index - visibleCards) % (totalOriginal - visibleCards + 1);
-    if (adjustedIndex < 0) adjustedIndex += (totalOriginal - visibleCards + 1);
-    dots[adjustedIndex].classList.add("active");
+    let adjustind = (index - visibcards) % (totorigin - visibcards + 1);
+    if (adjustind < 0) adjustind += (totorigin - visibcards + 1);
+    dots[adjustind].classList.add("active");
   }
 
   function goToSlide(index, skipTransition = false) {
@@ -50,11 +47,11 @@ window.addEventListener("load", function () {
   }
 
   track.addEventListener("transitionend", () => {
-    if (currentIndex >= totalOriginal + visibleCards) {
-      currentIndex = visibleCards;
+    if (currentIndex >= totorigin + visibcards) {
+      currentIndex = visibcards;
       goToSlide(currentIndex, true);
     } else if (currentIndex <= 0) {
-      currentIndex = totalOriginal;
+      currentIndex = totorigin;
       goToSlide(currentIndex, true);
     }
   });
@@ -73,4 +70,3 @@ window.addEventListener("load", function () {
   track.addEventListener("mouseenter", () => clearInterval(interval));
   track.addEventListener("mouseleave", resetAutoSlide);
 });
-

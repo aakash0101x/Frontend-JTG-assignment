@@ -27,9 +27,6 @@ nav {
 nav>div>img {
     width: 158px;
     height: 76px;
-    /* top: 38px;
-    left: 96px; */
-
 }
 
 .nav-items {
@@ -970,5 +967,4 @@ footer {
 
     color: #767676;
     padding-left: 10px;
-
 }
